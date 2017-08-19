@@ -1,0 +1,54 @@
+<div class="container">
+
+
+  <div class="row">
+<div class="col-md-8 col-md-offset-2">
+  <div class="jumbotron">
+    <h3>
+      <%= @user.email %>
+    </h3>
+  </div>
+</div>
+  
+<div class="page-header">
+
+  <h1>
+    <a href="/outfit/new" class="btn btn-lg btn-success">New Outfit</a>
+  </h1>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Outfit</th>
+        <th># of Items</th>
+      </tr>
+
+      <% @outfits.each do |outfit| %>
+      <tr>
+        
+              <% ComfortZone.where(:id => outfit.comfort_zone_id).each do |comfort_zone| %>
+              <li><%= comfort_zone.comfort_zone_name %></li>
+              <% end %>
+        
+        
+        
+        <td><%= outfit.comfort_zone_id %></td>
+        <!--  I want the comfort zone name to show not the id  -->
+        <!--  Why does ".comfort_zone_id" work but not ".comfort_zone_name"  -->
+        
+
+        
+        <td><%= outfit.outfit_items.count %></td>
+      </tr>
+    
+      <ul>
+          <!--   outfit.item_name.list     Trying to show all the clothing item names belong to that outfit    -->
+          
+      </ul>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>
+    Outfits
+    <a href="/outfits/new" class="btn btn-lg btn-success">New Outfit</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>User</th>
+        <th>Comfort zone</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @outfits.each do |outfit| %>
+      <tr>
+        <td><%= outfit.user_id %></td>
+        <td><%= outfit.comfort_zone_id %></td>
+        <td>
+          <a href="/outfits/<%= outfit.id %>" class="btn btn-primary">Show</a>
+          <a href="/outfits/<%= outfit.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_outfit/<%= outfit.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @comfort_zone.errors.any? %>
+  <% @comfort_zone.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Comfort Zone</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_comfort_zone" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for comfort_zone_name -->
+      <div class="form-group">
+        <label for="comfort_zone_name" class="control-label">
+          Comfort zone name
+        </label>
+
+        <input type="text" id="comfort_zone_name" name="comfort_zone_name" placeholder="Comfort zone name" class="form-control" value="<%= @comfort_zone.comfort_zone_name %>">
+      </div>
+
+      <!-- Label and input for comfort_zone_temp_min -->
+      <div class="form-group">
+        <label for="comfort_zone_temp_min" class="control-label">
+          Comfort zone temp min
+        </label>
+
+        <input type="text" id="comfort_zone_temp_min" name="comfort_zone_temp_min" placeholder="Comfort zone temp min" class="form-control" value="<%= @comfort_zone.comfort_zone_temp_min %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Comfort Zone
+      </button>
+      or
+      <a href="/comfort_zones">Cancel</a>
+    </form>
+  </div>
+</div>

@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin.git
-  revision: aa8df80d1b72f33985b66b10081aa2d7da8130bf
+  revision: 0df2df0bf65a6e22dcf46d01dbaa12d6e995fb89
   specs:
-    activeadmin (1.1.0)
+    activeadmin (2.0.0.alpha)
       arbre (>= 1.1.1)
       formtastic (~> 3.1)
       formtastic_i18n
       inherited_resources (~> 1.7)
-      jquery-rails
+      jquery-rails (>= 4.2.0)
       kaminari (>= 1.0.1)
       railties (>= 4.2, < 5.2)
       ransack (~> 1.3)
@@ -43,6 +43,12 @@ GIT
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+
+GIT
+  remote: https://github.com/raghubetina/starter_generators
+  revision: 48fa7a4fbe4eb90ecfe05a133a7d7550167308f8
+  specs:
+    starter_generators (0.9.6)
 
 GEM
   remote: https://rubygems.org/
@@ -92,7 +98,7 @@ GEM
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (8.0.0)
-    autoprefixer-rails (7.1.2.4)
+    autoprefixer-rails (7.1.2.6)
       execjs
     awesome_print (1.8.0)
     babel-source (5.8.35)
@@ -107,8 +113,9 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap (4.0.0.alpha6)
+    bootstrap (4.0.0.beta)
       autoprefixer-rails (>= 6.0.3)
+      popper_js (~> 1.11.1)
       sass (>= 3.4.19)
     builder (3.2.3)
     byebug (9.0.6)
@@ -192,14 +199,14 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_mime (0.1.3)
+    mini_mime (0.1.4)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
     multi_json (1.12.1)
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
-    octicons (4.0.1)
+    octicons (4.0.2)
       nokogiri (>= 1.6.3.1)
     octicons_helper (4.0.1)
       octicons (~> 4.0)
@@ -207,6 +214,7 @@ GEM
     orm_adapter (0.5.0)
     polyamorous (1.3.1)
       activerecord (>= 3.0)
+    popper_js (1.11.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -214,7 +222,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (2.0.5)
-    puma (3.9.1)
+    puma (3.10.0)
     rack (2.0.3)
     rack-contrib (1.2.0)
       rack (>= 0.9.1)
@@ -264,7 +272,7 @@ GEM
     rspec-mocks (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.6.0)
-    rspec-rails (3.6.0)
+    rspec-rails (3.6.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -301,7 +309,7 @@ GEM
     sqlite3 (1.3.13)
     tether-rails (1.4.0)
       rails (>= 3.1)
-    thor (0.19.4)
+    thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
     turbolinks (5.0.1)
@@ -356,6 +364,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sqlite3
+  starter_generators!
   tzinfo-data
   uglifier (>= 1.3.0)
   wdm
@@ -364,4 +373,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.15.2
+   1.15.3

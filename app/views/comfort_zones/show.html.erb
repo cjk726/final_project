@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>Comfort Zone #<%= @comfort_zone.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Comfort zone name</dt>
+      <dd><%= @comfort_zone.comfort_zone_name %></dd>
+
+      <dt>Comfort zone temp min</dt>
+      <dd><%= @comfort_zone.comfort_zone_temp_min %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/comfort_zones" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/comfort_zones/<%= @comfort_zone.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_comfort_zone/<%= @comfort_zone.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<!-- Validation failure messages -->
+<% if @clothing_item.errors.any? %>
+  <% @clothing_item.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Clothing Item #<%= @clothing_item.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_clothing_item/<%= @clothing_item.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for item_name -->
+      <div class="form-group">
+        <label for="item_name" class="control-label">
+          Item name
+        </label>
+
+        <input type="text" id="item_name" name="item_name" placeholder="Item name" class="form-control" value="<%= @clothing_item.item_name %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Clothing Item
+      </button>
+      or
+      <a href="/clothing_items/<%= @clothing_item.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
