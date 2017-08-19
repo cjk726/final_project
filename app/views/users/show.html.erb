@@ -29,13 +29,10 @@
       <% @outfits.each do |outfit| %>
       <tr>
         
-              <% ComfortZone.where(:id => outfit.comfort_zone_id).each do |comfort_zone| %>
-              <li><%= comfort_zone.comfort_zone_name %></li>
-              <% end %>
+
         
         
-        
-        <td><%= outfit.comfort_zone_id %></td>
+        <td><%= outfit.comfort_zone.comfort_zone_name %></td>
         <!--  I want the comfort zone name to show not the id  -->
         <!--  Why does ".comfort_zone_id" work but not ".comfort_zone_name"  -->
         
