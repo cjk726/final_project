@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
     @outfits = @user.outfits
     render("users/show.html.erb")
   end

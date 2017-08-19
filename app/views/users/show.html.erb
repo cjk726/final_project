@@ -1,22 +1,10 @@
 <div class="container">
 
-
-  <div class="row">
-<div class="col-md-8 col-md-offset-2">
-  <div class="jumbotron">
-    <h3>
-      <%= @user.email %>
-    </h3>
-  </div>
-</div>
-  
 <div class="page-header">
-
   <h1>
-    <a href="/outfit/new" class="btn btn-lg btn-success">New Outfit</a>
+    My Outfits
   </h1>
 </div>
-
 
 <div class="row">
   <div class="col-md-12">
@@ -24,28 +12,47 @@
       <tr>
         <th>Outfit</th>
         <th># of Items</th>
+        <th>Actions</th>
       </tr>
 
       <% @outfits.each do |outfit| %>
       <tr>
-        
-
-        
-        
         <td><%= outfit.comfort_zone.comfort_zone_name %></td>
-        <!--  I want the comfort zone name to show not the id  -->
-        <!--  Why does ".comfort_zone_id" work but not ".comfort_zone_name"  -->
-        
-
-        
         <td><%= outfit.outfit_items.count %></td>
+        <td>
+          <a href="/outfits/<%= outfit.id %>" class="btn btn-primary">Show</a>
+          <a href="/outfits/<%= outfit.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_outfit/<%= outfit.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
       </tr>
-    
-      <ul>
-          <!--   outfit.item_name.list     Trying to show all the clothing item names belong to that outfit    -->
-          
-      </ul>
       <% end %>
+
     </table>
   </div>
 </div>
+
+<div class="page-header">
+  <h3>Add Outfit</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_outfit" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for comfort_zone_id -->
+      <div class="form-group">
+        <label for="comfort_zone_id" class="control-label">
+          Comfort zone
+        </label>
+
+      <%= select_tag("comfort_zone_id", options_from_collection_for_select(ComfortZone.all, :id, :comfort_zone_name, @comfortzone), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-success">
+        Add New Outfit
+      </button>
+    </form>
+  </div>
+</div> 

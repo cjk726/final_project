@@ -25,7 +25,7 @@ class OutfitsController < ApplicationController
     save_status = @outfit.save
 
     if save_status == true
-      redirect_to("/outfits/#{@outfit.id}", :notice => "Outfit created successfully.")
+      redirect_to("/users/<%= current_user.id %>", :notice => "Outfit created successfully.")
     else
       render("outfits/new.html.erb")
     end
