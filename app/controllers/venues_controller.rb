@@ -13,7 +13,7 @@ class VenuesController < ApplicationController
 
   def new
     @venue = Venue.new
-
+    @neighborhoods = Neighborhood.all
     render("venues/new.html.erb")
   end
 
