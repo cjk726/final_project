@@ -1,4 +1,12 @@
 class PoolTablesController < ApplicationController
+  
+  def bookmarks
+    @pool_tables = current_user.bookmarked_pool_tables
+    @pool_table = PoolTable.new
+
+    render("pool_tables/bookmarked_pool_tables.html.erb")
+  end
+  
   def index
     @pool_tables = PoolTable.all
     @pool_table = PoolTable.new

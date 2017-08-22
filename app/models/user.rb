@@ -30,10 +30,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :bookmarks, :dependent => :destroy
-  has_many :pool_tables, :through => :bookmarks, :source => :pool_table
+  # has_many :pool_tables, :through => :bookmarks, :source => :pool_table
   has_many :venues, :through => :bookmarks, :source => :venue
   # is the line below that introduces a new association name needed or is it repeating the has_many :pool_tables lines from above
-  # has_many :bookmarked_pool_tables, :through => :bookmarks, :source => :pool_table   # need to have one-to-manies done first (as above and in other models)
+  has_many :bookmarked_pool_tables, :through => :bookmarks, :source => :pool_table   # need to have one-to-manies done first (as above and in other models)
 
   validates :username, :presence => true, :uniqueness => true
 
