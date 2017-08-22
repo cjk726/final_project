@@ -42,7 +42,8 @@
           Neighborhood
         </label>
 
-        <input type="text" id="neighborhood_id" name="neighborhood_id" placeholder="Neighborhood" class="form-control" value="<%= @venue.neighborhood_id %>">
+              <%= select_tag("neighborhood_id", options_from_collection_for_select(Neighborhood.all, :id, :neighborhood_name, @venue.neighborhood_id), :class => "form-control") %>
+
       </div>
 
       <!-- Label and input for ambience -->
@@ -52,15 +53,6 @@
         </label>
 
         <input type="text" id="ambience" name="ambience" placeholder="Ambience" class="form-control" value="<%= @venue.ambience %>">
-      </div>
-
-      <!-- Label and input for pool_table_id -->
-      <div class="form-group">
-        <label for="pool_table_id" class="control-label">
-          Pool table
-        </label>
-
-        <input type="text" id="pool_table_id" name="pool_table_id" placeholder="Pool table" class="form-control" value="<%= @venue.pool_table_id %>">
       </div>
 
       <button class="btn btn-warning">
