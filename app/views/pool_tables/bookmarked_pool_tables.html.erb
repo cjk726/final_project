@@ -13,6 +13,7 @@
         <th>Size</th>
         <th>Pool Table Pic</th>
         <th>Venue</th>
+        <th>Neighborhood</th>
         <th>Actions</th>
       </tr>
 
@@ -23,6 +24,7 @@
         <td><%= pool_table.size %></td>
         <td><%= pool_table.pool_table_pic %></td>
         <td><%= pool_table.venue.venue_name %></td>
+        <td><%= pool_table.neighborhood.neighborhood_name %></td>
         <td>
           <a href="/pool_tables/<%= pool_table.id %>" class="btn btn-primary">Show</a>
           <a href="/pool_tables/<%= pool_table.id %>/edit" class="btn btn-warning">Edit</a>
