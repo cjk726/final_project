@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Pool table name</dt>
+      <dt>Pool Table Name</dt>
       <dd><%= @pool_table.pool_table_name %></dd>
 
       <dt>Price</dt>
@@ -14,11 +14,11 @@
       <dt>Size</dt>
       <dd><%= @pool_table.size %></dd>
 
-      <dt>Pool table pic</dt>
-      <dd><%= @pool_table.pool_table_pic %></dd>
+      <dt>Pool Table Pic</dt>
+      <dd><img src="<%= @pool_table.pool_table_pic %>" class="img-thumbnail" alt="Pool Table"></dd>
 
       <dt>Venue</dt>
-      <dd><%= @pool_table.venue_id %></dd>
+      <dd><%= @pool_table.venue.venue_name %></dd>
 
     </dl>
 

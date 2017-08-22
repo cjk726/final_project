@@ -1,7 +1,7 @@
 class PoolTablesController < ApplicationController
   def index
     @pool_tables = PoolTable.all
-
+    @pool_table = PoolTable.new
     render("pool_tables/index.html.erb")
   end
 
@@ -29,7 +29,8 @@ class PoolTablesController < ApplicationController
     save_status = @pool_table.save
 
     if save_status == true
-      redirect_to("/pool_tables/#{@pool_table.id}", :notice => "Pool table created successfully.")
+      redirect_to("/pool_tables", :notice => "Pool table created successfully.")
+      # redirect_to("/pool_tables/#{@pool_table.id}", :notice => "Pool table created successfully.")
     else
       render("pool_tables/new.html.erb")
     end
@@ -53,7 +54,8 @@ class PoolTablesController < ApplicationController
     save_status = @pool_table.save
 
     if save_status == true
-      redirect_to("/pool_tables/#{@pool_table.id}", :notice => "Pool table updated successfully.")
+      redirect_to("/pool_tables", :notice => "Pool table created successfully.")
+      # redirect_to("/pool_tables/#{@pool_table.id}", :notice => "Pool table updated successfully.")
     else
       render("pool_tables/edit.html.erb")
     end
@@ -67,7 +69,7 @@ class PoolTablesController < ApplicationController
     if URI(request.referer).path == "/pool_tables/#{@pool_table.id}"
       redirect_to("/", :notice => "Pool table deleted.")
     else
-      redirect_to(:back, :notice => "Pool table deleted.")
+      redirect_to("/pool_tables", :notice => "Pool table deleted.")
     end
   end
 end

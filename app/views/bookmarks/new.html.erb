@@ -24,7 +24,7 @@
           Venue
         </label>
 
-        <input type="text" id="venue_id" name="venue_id" placeholder="Venue" class="form-control" value="<%= @bookmark.venue_id %>">
+        <%= select_tag("venue_id", options_from_collection_for_select(Venue.all, :id, :venue_name, @bookmark.venue_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for pool_table_id -->
@@ -32,18 +32,18 @@
         <label for="pool_table_id" class="control-label">
           Pool table
         </label>
-
-        <input type="text" id="pool_table_id" name="pool_table_id" placeholder="Pool table" class="form-control" value="<%= @bookmark.pool_table_id %>">
+        <%= select_tag("pool_table_id", options_from_collection_for_select(PoolTable.all, :id, :pool_table_name, @bookmark.pool_table_id), :class => "form-control") %>
       </div>
 
+  <!--  Not needed because current_user.id added to controller  -->
       <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
+      <!--<div class="form-group">-->
+      <!--  <label for="user_id" class="control-label">-->
+      <!--    User-->
+      <!--  </label>-->
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @bookmark.user_id %>">
-      </div>
+      <!--  <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @bookmark.user_id %>">-->
+      <!--</div>-->
 
       <!-- Label and input for comments -->
       <div class="form-group">

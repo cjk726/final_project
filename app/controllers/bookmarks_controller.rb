@@ -22,7 +22,7 @@ class BookmarksController < ApplicationController
 
     @bookmark.venue_id = params[:venue_id]
     @bookmark.pool_table_id = params[:pool_table_id]
-    @bookmark.user_id = params[:user_id]
+    @bookmark.user_id = current_user.id    
     @bookmark.comments = params[:comments]
 
     save_status = @bookmark.save
@@ -45,7 +45,7 @@ class BookmarksController < ApplicationController
 
     @bookmark.venue_id = params[:venue_id]
     @bookmark.pool_table_id = params[:pool_table_id]
-    @bookmark.user_id = params[:user_id]
+    @bookmark.user_id = current_user.id
     @bookmark.comments = params[:comments]
 
     save_status = @bookmark.save

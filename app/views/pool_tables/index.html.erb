@@ -1,7 +1,6 @@
 <div class="page-header">
   <h1>
-    Pool tables
-    <a href="/pool_tables/new" class="btn btn-lg btn-success">New Pool table</a>
+    Pool Tables
   </h1>
 </div>
 
@@ -9,10 +8,10 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Pool table name</th>
+        <th>Pool Table Name</th>
         <th>Price</th>
         <th>Size</th>
-        <th>Pool table pic</th>
+        <th>Pool Table Pic</th>
         <th>Venue</th>
         <th>Actions</th>
       </tr>
@@ -23,7 +22,7 @@
         <td><%= pool_table.price %></td>
         <td><%= pool_table.size %></td>
         <td><%= pool_table.pool_table_pic %></td>
-        <td><%= pool_table.venue_id %></td>
+        <td><%= pool_table.venue.venue_name %></td>
         <td>
           <a href="/pool_tables/<%= pool_table.id %>" class="btn btn-primary">Show</a>
           <a href="/pool_tables/<%= pool_table.id %>/edit" class="btn btn-warning">Edit</a>
@@ -32,5 +31,65 @@
       </tr>
       <% end %>
     </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h3>Add a Pool Table</h3>
+    <form action="/create_pool_table" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for pool_table_name -->
+      <div class="form-group">
+        <label for="pool_table_name" class="control-label">
+          Pool table name
+        </label>
+
+        <input type="text" id="pool_table_name" name="pool_table_name" placeholder="Pool table name" class="form-control" value="<%= @pool_table.pool_table_name %>">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @pool_table.price %>">
+      </div>
+
+      <!-- Label and input for size -->
+      <div class="form-group">
+        <label for="size" class="control-label">
+          Size
+        </label>
+
+        <input type="text" id="size" name="size" placeholder="Size" class="form-control" value="<%= @pool_table.size %>">
+      </div>
+
+      <!-- Label and input for pool_table_pic -->
+      <div class="form-group">
+        <label for="pool_table_pic" class="control-label">
+          Pool table pic
+        </label>
+
+        <input type="text" id="pool_table_pic" name="pool_table_pic" placeholder="Pool table pic" class="form-control" value="<%= @pool_table.pool_table_pic %>">
+      </div>
+
+      <!-- Label and input for venue_id -->
+      <div class="form-group">
+        <label for="venue_id" class="control-label">
+          Venue
+        </label>
+
+        <%= select_tag("venue_id", options_from_collection_for_select(Venue.all, :id, :venue_name, @pool_table.venue_id), :class => "form-control") %>
+
+      </div>
+
+      <button class="btn btn-success">
+        Add Pool Table
+      </button>
+    </form>
   </div>
 </div>
