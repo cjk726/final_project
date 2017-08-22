@@ -13,5 +13,5 @@ class Neighborhood < ApplicationRecord
     has_many :pool_tables, :through => :venues, :source => :pool_tables
     has_many :bookmarks, :through => :venues, :source => :bookmarks
     
-    validates :neighborhood_name, :presence => true, :uniqueness => true
+    validates :neighborhood_name, :presence => true, uniqueness: { case_sensitive: false }
 end

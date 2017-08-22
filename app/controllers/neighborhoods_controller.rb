@@ -1,6 +1,7 @@
 class NeighborhoodsController < ApplicationController
   def index
     @neighborhoods = Neighborhood.all
+    @neighborhood = Neighborhood.new
 
     render("neighborhoods/index.html.erb")
   end
@@ -25,7 +26,8 @@ class NeighborhoodsController < ApplicationController
     save_status = @neighborhood.save
 
     if save_status == true
-      redirect_to("/neighborhoods/#{@neighborhood.id}", :notice => "Neighborhood created successfully.")
+      redirect_to("/neighborhoods", :notice => "Neighborhood created successfully.")
+      # redirect_to("/neighborhoods/#{@neighborhood.id}", :notice => "Neighborhood created successfully.")
     else
       render("neighborhoods/new.html.erb")
     end
@@ -45,7 +47,8 @@ class NeighborhoodsController < ApplicationController
     save_status = @neighborhood.save
 
     if save_status == true
-      redirect_to("/neighborhoods/#{@neighborhood.id}", :notice => "Neighborhood updated successfully.")
+      redirect_to("/neighborhoods", :notice => "Neighborhood updated successfully.")
+      # redirect_to("/neighborhoods/#{@neighborhood.id}", :notice => "Neighborhood updated successfully.")
     else
       render("neighborhoods/edit.html.erb")
     end
@@ -59,7 +62,7 @@ class NeighborhoodsController < ApplicationController
     if URI(request.referer).path == "/neighborhoods/#{@neighborhood.id}"
       redirect_to("/", :notice => "Neighborhood deleted.")
     else
-      redirect_to(:back, :notice => "Neighborhood deleted.")
+      redirect_to("/neighborhoods", :notice => "Neighborhood deleted.")
     end
   end
 end
