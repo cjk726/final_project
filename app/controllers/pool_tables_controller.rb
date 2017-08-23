@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class PoolTablesController < ApplicationController
   
   def bookmarks
@@ -10,12 +12,23 @@ class PoolTablesController < ApplicationController
   def index
     @pool_tables = PoolTable.all
     @pool_table = PoolTable.new
+    @bookmark = Bookmark.new
     render("pool_tables/index.html.erb")
   end
 
   def show
     @pool_table = PoolTable.find(params[:id])
-
+    @street_address = @pool_table.venue.address
+    
+    street_address_nospaces=@street_address.gsub(" ","+")
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address="+street_address_nospaces
+    parsed_data = JSON.parse(open(url).read)
+    @lat = 44.540 
+    @lng = -78.546
+    
+    # @lat = parsed_data["results"][0]["geometry"]["location"]["lat"]
+    # @lng = parsed_data["results"][0]["geometry"]["location"]["lng"]
+    
     render("pool_tables/show.html.erb")
   end
 

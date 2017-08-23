@@ -9,19 +9,19 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Venue</th>
+        <!--<th>Venue</th>-->
         <th>Pool table</th>
         <th>User</th>
-        <th>Comments</th>
+        <!--<th>Comments</th>-->
         <th>Actions</th>
       </tr>
 
       <% @bookmarks.each do |bookmark| %>
       <tr>
-        <td><%= bookmark.venue_id %></td>
+        <!--<td><= bookmark.venue_id %></td>-->
         <td><%= bookmark.pool_table_id %></td>
         <td><%= bookmark.user_id %></td>
-        <td><%= bookmark.comments %></td>
+        <!--<td><= bookmark.comments %></td>-->
         <td>
           <a href="/bookmarks/<%= bookmark.id %>" class="btn btn-primary">Show</a>
           <a href="/bookmarks/<%= bookmark.id %>/edit" class="btn btn-warning">Edit</a>

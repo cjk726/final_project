@@ -23,14 +23,14 @@ class BookmarksController < ApplicationController
     @bookmark.venue_id = params[:venue_id]
     @bookmark.pool_table_id = params[:pool_table_id]
     @bookmark.user_id = current_user.id    
-    @bookmark.comments = params[:comments]
+    # @bookmark.comments = params[:comments]
 
     save_status = @bookmark.save
 
     if save_status == true
-      redirect_to("/bookmarks/#{@bookmark.id}", :notice => "Bookmark created successfully.")
+      redirect_to("/my_pool_tables", :notice => "Bookmark created successfully.")
     else
-      render("bookmarks/new.html.erb")
+      redirect_to("/pool_tables")
     end
   end
 

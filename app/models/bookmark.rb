@@ -18,7 +18,7 @@ class Bookmark < ApplicationRecord
     has_one :neighborhood, :through => :venue, :source => :neighborhood
     
     validates :user_id, :presence => true, :uniqueness => {:scope => :pool_table_id}
-    validates :venue_id, :presence => true
+    # validates :venue_id, :presence => true
     validates :pool_table_id, :presence => true
     
 end

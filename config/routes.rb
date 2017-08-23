@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  root "pool_tables#index"
+  # root "pool_tables#index
+  get "/", :controller => "pool_tables", :action => "bookmarks"
 
   # Routes for the Neighborhood resource:
   # CREATE

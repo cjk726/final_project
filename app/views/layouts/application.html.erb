@@ -40,12 +40,17 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
+          
+          <% if current_user == nil %>
+
+          <% else %>
           <li><a href="/my_pool_tables">My Pool Tables</a></li>
           <li><a href="/pool_tables">All Pool Tables</a></li>
-          <li><a href="/neighborhoods">Neighborhoods</a></li>
+          <!--<li><a href="/neighborhoods">Neighborhoods</a></li>-->
           <li><a href="/venues">Venues</a></li>
           <li><a href="/bookmarks">Bookmarks</a></li>
           <li><a href="/rails/git" target="_blank">Git</a></li>
+          <% end %>
         </ul>
 
 
