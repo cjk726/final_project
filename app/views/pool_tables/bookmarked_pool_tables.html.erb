@@ -26,7 +26,7 @@
         <td>
           <a href="/pool_tables/<%= pool_table.id %>" class="btn btn-primary">Show</a>
           <a href="/pool_tables/<%= pool_table.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_bookmark/find%= pool_table.id %>" class="btn btn-danger" rel="nofollow">Delete Bookmark</a>
+          <a href="/delete_bookmark/<%= Bookmark.find(pool_table.bookmark_ids) %>" class="btn btn-danger" rel="nofollow">Delete Bookmark</a>
         </td>
       </tr>
       <% end %>

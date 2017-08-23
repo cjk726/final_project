@@ -8,6 +8,17 @@ class VenuesController < ApplicationController
 
   def show
     @venue = Venue.find(params[:id])
+    
+    @street_address = @venue.address
+    
+    street_address_nospaces=@street_address.gsub(" ","+")
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address="+street_address_nospaces
+    parsed_data = JSON.parse(open(url).read)
+    # @lat = 44.540 
+    # @lng = -78.546
+    
+    @lat = parsed_data["results"][0]["geometry"]["location"]["lat"]
+    @lng = parsed_data["results"][0]["geometry"]["location"]["lng"]
 
     render("venues/show.html.erb")
   end
@@ -30,8 +41,8 @@ class VenuesController < ApplicationController
     save_status = @venue.save
 
     if save_status == true
-      redirect_to("/venues}", :notice => "Venue created successfully.")
-      # redirect_to("/venues/#{@venue.id}", :notice => "Venue created successfully.")
+      redirect_to("/venues", :notice => "Venue created successfully.")
+      # redirect_to("/venues#{@venue.id}", :notice => "Venue created successfully.")
     else
       render("venues/new.html.erb")
     end

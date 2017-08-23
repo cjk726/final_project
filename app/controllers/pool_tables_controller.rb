@@ -23,11 +23,11 @@ class PoolTablesController < ApplicationController
     street_address_nospaces=@street_address.gsub(" ","+")
     url = "https://maps.googleapis.com/maps/api/geocode/json?address="+street_address_nospaces
     parsed_data = JSON.parse(open(url).read)
-    @lat = 44.540 
-    @lng = -78.546
+    # @lat = 44.540 
+    # @lng = -78.546
     
-    # @lat = parsed_data["results"][0]["geometry"]["location"]["lat"]
-    # @lng = parsed_data["results"][0]["geometry"]["location"]["lng"]
+    @lat = parsed_data["results"][0]["geometry"]["location"]["lat"]
+    @lng = parsed_data["results"][0]["geometry"]["location"]["lng"]
     
     render("pool_tables/show.html.erb")
   end
