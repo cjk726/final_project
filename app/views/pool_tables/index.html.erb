@@ -13,6 +13,7 @@
         <th>Size</th>
         <th>Venue</th>
         <th>Neighborhood</th>
+        <!--<th>test</th>-->
         <th>Actions</th>
       </tr>
 
@@ -23,6 +24,12 @@
         <td><%= pool_table.size %>-ft</td>
         <td><%= pool_table.venue.venue_name %></td>
         <td><%= pool_table.neighborhood.neighborhood_name %></td>
+        <!--<td>< if Bookmark.where(:user_id => current_user.id, :pool_table_id => pool_table.id) == nil %>-->
+        <!--<p>no bookmark</p>-->
+        <!--< else %>-->
+        <!--<p>bookmark-->
+        <!--< end %>-->
+        <!--</td>-->
         <td>
           <a href="/pool_tables/<%= pool_table.id %>" class="btn btn-primary">Show</a>
           <a href="/pool_tables/<%= pool_table.id %>/edit" class="btn btn-warning">Edit</a>
