@@ -1,0 +1,74 @@
+<!-- Validation failure messages -->
+<% if @pool_table.errors.any? %>
+  <% @pool_table.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Pool Table</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_pool_table" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for pool_table_name -->
+      <div class="form-group">
+        <label for="pool_table_name" class="control-label">
+          Pool table name
+        </label>
+
+        <input type="text" id="pool_table_name" name="pool_table_name" placeholder="Pool table name" class="form-control" value="<%= @pool_table.pool_table_name %>">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @pool_table.price %>">
+      </div>
+
+      <!-- Label and input for size -->
+      <div class="form-group">
+        <label for="size" class="control-label">
+          Size
+        </label>
+
+        <input type="text" id="size" name="size" placeholder="Size" class="form-control" value="<%= @pool_table.size %>">
+      </div>
+
+      <!-- Label and input for pool_table_pic -->
+      <div class="form-group">
+        <label for="pool_table_pic" class="control-label">
+          Pool table pic
+        </label>
+
+        <input type="text" id="pool_table_pic" name="pool_table_pic" placeholder="Pool table pic" class="form-control" value="<%= @pool_table.pool_table_pic %>">
+      </div>
+
+      <!-- Label and input for venue_id -->
+      <div class="form-group">
+        <label for="venue_id" class="control-label">
+          Venue
+        </label>
+
+        <%= select_tag("venue_id", options_from_collection_for_select(Venue.all, :id, :venue_name, @pool_table.venue_id), :class => "form-control") %>
+
+      </div>
+
+      <button class="btn btn-success">
+        Create Pool Table
+      </button>
+      or
+      <a href="/pool_tables">Cancel</a>
+    </form>
+  </div>
+</div>

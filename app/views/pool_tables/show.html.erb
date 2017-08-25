@@ -1,0 +1,85 @@
+<div class="page-header">
+  <h3>Pool Table #<%= @pool_table.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Pool Table Name</dt>
+      <dd><%= @pool_table.pool_table_name %></dd>
+
+      <dt>Price</dt>
+      <dd><%=number_to_currency(@pool_table.size, precision: 2) %></dd>
+
+      <dt>Size</dt>
+      <dd><%= @pool_table.size %>-ft</dd>
+      
+      <dt>Venue</dt>
+      <dd><%= @pool_table.venue.venue_name %></dd>
+
+      <dt>Venue Address</dt>
+      <dd><%= @pool_table.venue.address %></dd>
+      
+      <dt>Venue on Map</dt>
+      <dd>
+<style>
+#map {
+  width: 500px;
+  height: 400px;
+}
+</style>
+
+<div id="map"></div>
+
+<script>
+function initMap() {
+  var mapDiv = document.getElementById('map');
+  var map = new google.maps.Map(mapDiv, {
+    center: {lat: <%= @lat %>, lng: <%= @lng %>},
+    // center: {lat: 44.540, lng: -78.546},
+
+    zoom: 14
+  });
+  
+  
+  var infowindow = new google.maps.InfoWindow({
+    content: "<h4><%= @pool_table.venue.venue_name %></h4>" +
+             "<p><%= @pool_table.venue.ambience %></p>"
+  });
+  
+  var marker = new google.maps.Marker({
+    position: {lat: <%= @lat %>, lng: <%= @lng %>}, 
+    // position: {lat: 44.5405, lng: -78.5465}, 
+    map: map,
+    title: '<%= @pool_table.venue.venue_name %>',
+    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' 
+  });
+  
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+  
+};
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+      
+      </dd>
+
+      <dt>Pool Table Pic</dt>
+      <dd><img src="<%= @pool_table.pool_table_pic %>" class="img-thumbnail" alt="Pool Table"></dd>
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/pool_tables" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/pool_tables/<%= @pool_table.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_pool_table/<%= @pool_table.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

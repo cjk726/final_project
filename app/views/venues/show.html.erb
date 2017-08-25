@@ -1,0 +1,84 @@
+<div class="page-header">
+  <h3>Venue #<%= @venue.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Venue name</dt>
+      <dd><%= @venue.venue_name %></dd>
+
+      <dt>Address</dt>
+      <dd><%= @venue.address %></dd>
+
+      <dt>Neighborhood</dt>
+      <dd><%= @venue.neighborhood.neighborhood_name %></dd>
+
+      <dt>Ambience</dt>
+      <dd><%= @venue.ambience %></dd>
+
+      <dt># of Pool Tables</dt>
+      <dd><%= @venue.pool_tables.count %></dd>
+
+<dt>Venue on Map</dt>
+      <dd>
+<style>
+#map {
+  width: 500px;
+  height: 400px;
+}
+</style>
+
+<div id="map"></div>
+
+<script>
+function initMap() {
+  var mapDiv = document.getElementById('map');
+  var map = new google.maps.Map(mapDiv, {
+    center: {lat: <%= @lat %>, lng: <%= @lng %>},
+    // center: {lat: 44.540, lng: -78.546},
+
+    zoom: 14
+  });
+  
+  
+  var infowindow = new google.maps.InfoWindow({
+    content: "<h4><%= @venue.venue_name %></h4>" +
+             "<p><%= @venue.ambience %></p>"
+  });
+  
+  var marker = new google.maps.Marker({
+    position: {lat: <%= @lat %>, lng: <%= @lng %>}, 
+    // position: {lat: 44.5405, lng: -78.5465}, 
+    map: map,
+    title: '<%= @venue.venue_name %>',
+    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png' 
+  });
+  
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+  
+};
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+      
+      </dd>
+
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/venues" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/venues/<%= @venue.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_venue/<%= @venue.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
